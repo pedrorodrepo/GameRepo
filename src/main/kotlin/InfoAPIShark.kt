@@ -1,1 +1,3 @@
-data class InfoAPIShark(val title: String, val thumb: String)
+data class InfoAPIShark(
+    val title: String,
+    val thumb: String)

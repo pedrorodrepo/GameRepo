@@ -37,10 +37,14 @@ fun main() {
 //        println("Game not found, try another ID.")
 //    }
 
+    var myGame: Game? = null
+
     val result = runCatching {
         val myInfoGame = gson.fromJson(jsonBody, InfoGame::class.java)
-        val myGame = Game(myInfoGame.info.title, myInfoGame.info.thumb)
-        println(myGame.toString())
+
+        myGame = Game(
+            myInfoGame.info.title,
+            myInfoGame.info.thumb)
     }
 
     result.onFailure {
@@ -53,10 +57,14 @@ fun main() {
 
         if (option.equals("s", true)) {
             println("Insert your custom description to the game: ")
-            val description = reader.nextLine()
+            val insertDescription = reader.nextLine()
+            myGame?.description = insertDescription
         } else {
-            println("The description will be the title of the game")
+            myGame?.description = myGame?.title
 
+            println("The description will be the title of the game")
         }
+
+        println("\n${myGame.toString()}")
     }
 }
