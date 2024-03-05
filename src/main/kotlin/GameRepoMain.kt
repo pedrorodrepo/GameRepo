@@ -19,10 +19,6 @@ fun main() {
             infoGame.info.thumb)
     }
 
-    result.onFailure {
-        println("com.pedrorodrepo.gamerepo.model.Game not found, try another ID.")
-    }
-
     result.onSuccess {
         println("Do you want to insert a custom description? S/N")
         val option = reader.nextLine()
@@ -38,5 +34,8 @@ fun main() {
         }
 
         println("\n${myGame.toString()}")
+    }
+    result.onFailure {
+        println("Game not found, try another ID.")
     }
 }
