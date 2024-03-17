@@ -20,13 +20,3 @@ fun main () {
         println(gamer)
     }
 }
-
-//  let - executa uma ação em um objeto e retorna o resultado da expressão lambda;
-//
-//  run - também executa uma ação em um objeto como o let, mas não retorna o resultado da expressão, e sim o resultado do bloco de código;
-//
-//  with - executa uma sequência de operações sendo necessário passar o objeto como argumento explícito;
-//
-//  apply - realiza operações de configuração em um objeto e retorna o próprio objeto modificado;
-//
-//  also - realiza a mesma coisa que o apply, porém retorna o próprio objeto original.
