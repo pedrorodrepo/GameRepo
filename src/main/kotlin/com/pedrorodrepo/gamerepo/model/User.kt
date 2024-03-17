@@ -1,5 +1,7 @@
 package com.pedrorodrepo.gamerepo.model
 
+import java.io.Reader
+import java.util.*
 import kotlin.random.Random
 
 data class User(
@@ -16,6 +18,7 @@ data class User(
             if (id.isNullOrBlank())
                 createId()
         }
+    val historyGameSearch = mutableListOf<Game?>()
 
     constructor(name: String, email: String, bDate: String, userName: String) :
             this(name, email) {
@@ -27,7 +30,7 @@ data class User(
     init {
         this.email = validEmail()
 
-        if (this.name.isNullOrBlank()) {
+        if (this.name.isBlank()) {
             throw IllegalArgumentException("Invalid name! Please try another one.")
         }
     }
@@ -50,5 +53,27 @@ data class User(
             return email
         else
             throw IllegalArgumentException("Invalid E-mail! Please try another one.")
+    }
+
+    companion object {
+        fun createUser(reader: Scanner): User {
+            println("Welcome to AluGames by PedroRodRepo! Let's register you. Insert your name: ")
+            val name = reader.nextLine()
+            println("Insert your e-mail: ")
+            val email = reader.nextLine()
+            println("Do you want to complete the register with your birthday? (S/N)")
+            val option = reader.nextLine()
+
+            if (option.equals("s", ignoreCase = true)) {
+                println("Insert your birthday - (mm/DD/yyyy): ")
+                val birthday = reader.nextLine()
+                println("Insert a user name: ")
+                val userName = reader.nextLine()
+
+                return User(name, email,birthday, userName)
+            } else {
+                return User(name, email)
+            }
+        }
     }
 }
